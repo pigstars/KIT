@@ -3,15 +3,14 @@
 using namespace std;
 int cnt[1000] = {0};
 int maxlevel = 0;
-static int level = 0;
+int level = 0;
 class Tree
 {
 public:
-	int val;
 	int adj[200];
 	int num;	
 };
-void DFS(Tree * t,int v)
+void DFS(Tree * t,int v,int level)
 {
 	++level;
 	if(t[v].num == 0)
@@ -25,7 +24,7 @@ void DFS(Tree * t,int v)
 	
 	for(int i = 0;i < t[v].num;i++)
 	{	
-		DFS(t,t[v].adj[i]);
+		DFS(t,t[v].adj[i],level);
 	}
 	
 }
@@ -42,15 +41,14 @@ int main(int argc, char *argv[]) {
 		int x;
 		int num;
 		cin >> x >> num;
-		t[i].num = num;
-		t[i].val = x;
+		t[x].num = num;
 		for(int j = 0;j < num;j++)
 		{
 			cin >> t[x].adj[j];
 			//cout << t[i].adj[j]<<endl;
 		}
 	}
-	DFS(t,0);
+	DFS(t,1,0);
 	
 	for(int i = 1;i < maxlevel;i++)
 	{
