@@ -1,9 +1,9 @@
 #include <iostream>
-#include "CConfig.h"
+#include "../CConfig.h"
 
 using namespace std;
 int main(int argc, char *argv[]) {
-	CConfig s("config.ini");
+	CConfig s("../config.ini");
 	s.ReadConfigFile();
 	s.ShowConfigContent();
 	//Common::GetSingle<CConfig>().ReadConfigFile();
